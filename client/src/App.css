@@ -36,3 +36,80 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* My Stuff */
+
+#logo{
+  background-color: black;
+  color: white;
+  font-family: 'Dancing Script';
+  font-size: 45px;
+  margin-left: 50px;
+  top:00px;
+  position: absolute;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.face-off-font {
+  position: absolute;
+  top: 125px;
+  left:100px;
+  font-size:30px;
+  font-family:'Open Sans';
+  color:red;
+}
+
+#drinks {
+  margin: 2rem;
+  padding: 20px;
+
+}
+
+.versus{
+  width: 40px;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  /*vertical-align:middle;*/
+  display: inline-grid;
+  color: red;    
+  top:375px;  
+  position: absolute;
+  left: 480px;
+
+  
+}
+
+.cocktail {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  /* vertical-align: bottom; */
+  display: inline-grid;
+  width: 360px;
+  position: absolute;
+
+}
+
+#cocktail-image {
+  width: 360px;
+  top:500px;
+  position: absolute;
+}
+#cocktail-name {
+  top:300px;
+  position: absolute;
+  width:360px;
+ 
+
+}
+.cocktail-recipe {
+  top:850px;
+  position: absolute;
+}
