@@ -31,11 +31,28 @@ function App() {
   }, []);
 
 
+    //Helper Functions
+
+    function updateTotalRankings(){
+
+        fetch("/total_ratings/1",{
+          method: "PATCH",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+            },
+            body: JSON.stringify({
+              total: 1
+            }),
+          });
+          
+    }
+
     //Event Handlers
 
     function handleDrinkClick1(strDrink){
       setDrinkWinner(1)
-      // updateTotalRankings()
+      updateTotalRankings()
       //updateDrinkRatings()
       console.log("drink1 winner "+strDrink)
       // getRandomDrinkNumbers()
@@ -46,7 +63,7 @@ function App() {
   }
   function handleDrinkClick2(strDrink){
     setDrinkWinner(2)
-    // updateTotalRankings()
+    updateTotalRankings()
     //updateDrinkRatings()
     console.log("drink2 winner "+strDrink)
     // getRandomDrinkNumbers()
