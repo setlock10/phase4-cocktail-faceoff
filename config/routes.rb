@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :total_ratings, only:[:show, :update]
-  resources :drinks, only:[:show, :index]
+  resources :drinks, only:[:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get '/hello', to: 'application#hello_world'
 
   # get '/random1', to: 'drinks#random1'
-  # get '/random2', to: 'drinks#random2'
+  get '/random2/', to: 'drinks#index'
   # post '/signup', to: 'users#create'
   # get '/me', to: 'users#show'
   # post '/login', to: 'sessions#create'
