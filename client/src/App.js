@@ -21,7 +21,7 @@ function App() {
   //Get two drinks
 
   useEffect(()=>{
-    fetch("/drinks")
+    fetch("/drinks/")
     .then(r=>r.json())
     .then(data=>{
       console.log(data)
