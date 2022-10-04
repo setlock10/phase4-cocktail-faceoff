@@ -22,10 +22,7 @@ function App() {
 
   useEffect(()=>{
     fetch("/drinks/")
-    .then((r) => {
-      console.log(r.json())
-      r.json()
-    })
+    .then((r) => r.json())
     .then(data=>{
       console.log(data)
       setDrink1(data[0])
