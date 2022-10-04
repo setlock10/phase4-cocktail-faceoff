@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import {BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from './Header';
 import './App.css';
 import FaceOff from './FaceOff';
@@ -77,10 +77,16 @@ function App() {
 
 
   return (
+    <BrowserRouter>
     <div className="App">
       <Header />
-      <FaceOff    handleDrinkClick1={handleDrinkClick1} handleDrinkClick2={handleDrinkClick2}  drink1={drink1} drink2={drink2} />
-    </div>
+      <Switch>
+        <Route  path="/">
+          <FaceOff    handleDrinkClick1={handleDrinkClick1} handleDrinkClick2={handleDrinkClick2}  drink1={drink1} drink2={drink2} />
+        </Route>
+      </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
