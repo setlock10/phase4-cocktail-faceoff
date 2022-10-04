@@ -21,7 +21,7 @@ function App() {
   //Get two drinks
 
   useEffect(()=>{
-    fetch("/random2/")
+    fetch("/random2")
     .then((r) => r.json())
     .then(data=>{
       console.log(data)
