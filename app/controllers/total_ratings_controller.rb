@@ -1,4 +1,6 @@
 class TotalRatingsController < ApplicationController
+    skip_before_action :authorize, only: :update
+
 
     # def create
     #     # byebug
