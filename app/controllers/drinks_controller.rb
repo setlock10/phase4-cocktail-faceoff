@@ -1,4 +1,6 @@
 class DrinksController < ApplicationController
+    skip_before_action :authorize, only: :index
+
     def show
         # byebug
         render json: Drink.find(params[:id]), status: :ok

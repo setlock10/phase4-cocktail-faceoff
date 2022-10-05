@@ -3,10 +3,15 @@ import {BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from './Header';
 import './App.css';
 import FaceOff from './FaceOff';
+import Login from './Login';
 
 function App() {
-  const [count, setCount] = useState(0);
+   const [total, setTotal] = useState(0);
 
+
+  // const [user, setuser] = useState=(null)
+
+  
   // useEffect(() => {
   //   fetch("/hello")
   //     .then((r) => r.json())
@@ -17,6 +22,11 @@ function App() {
   const [drinkWinner,setDrinkWinner]=useState(0)
   const [drink1,setDrink1]=useState({})
   const [drink2,setDrink2]=useState({})
+
+  //Get total rankings
+  useEffect(()=>{
+    updateTotalRankings()
+  },[])
 
   //Get two drinks
 
@@ -35,6 +45,29 @@ function App() {
 
     //Helper Functions
 
+    function calcElo(drinkWinner,drinkLoser){
+      //test 2
+      //new comment 3
+          let tempRating1=drinkWinner.rating
+          let tempRating2=drinkLoser.rating
+          let kFactor=100
+      
+          var prob1
+          var prob2
+      
+         
+      
+          prob1 =(1.0/(1.0+ Math.pow(10,((tempRating2-tempRating1)/400))))
+          prob2 =(1.0/(1.0+ Math.pow(10,((tempRating1-tempRating2)/400))))
+          console.log(`Probalility 1: ${prob1.toFixed(3)*100}%`)
+          console.log(`Probalility 2: ${prob2.toFixed(3)*100}%`)
+      
+          
+          drinkWinner.rating=parseInt(tempRating1+kFactor*(1-prob1))
+          drinkLoser.rating=parseInt(tempRating2+kFactor*(0-prob2))
+       
+       }
+
     function updateTotalRankings(){
 
         fetch("/total_ratings/1",{
@@ -46,8 +79,12 @@ function App() {
             body: JSON.stringify({
               total: 1
             }),
-          });
-          
+        })
+        .then (r=>r.json())
+        .then (total=> {
+          console.log(total)
+          setTotal(total)
+        })
     }
 
     //Event Handlers
@@ -56,7 +93,10 @@ function App() {
       setDrinkWinner(1)
       updateTotalRankings()
       //updateDrinkRatings()
-      console.log("drink1 winner "+strDrink)
+      console.log("drink1 winner "+drink1.strDrink)
+      console.log("rating before win"+drink1.rating)
+      calcElo(drink1,drink2)
+      console.log("rating after win"+drink1.rating)
       // getRandomDrinkNumbers()
       // getDrinkRatings(drinksData[random1],25)
       // getDrinkRatings(drinksData[random2],(-25))
@@ -79,8 +119,9 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <Header />
-      <Switch>
+      <Header total={total}/>
+      <Login/>
+       <Switch>
         <Route  path="/">
           <FaceOff    handleDrinkClick1={handleDrinkClick1} handleDrinkClick2={handleDrinkClick2}  drink1={drink1} drink2={drink2} />
         </Route>

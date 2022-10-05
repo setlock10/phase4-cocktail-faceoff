@@ -86,6 +86,20 @@ body {
   
 }
 
+.Login{
+  font-size: 20px;
+  top:45px;  
+  left:500px;
+  position: absolute;
+}
+
+.Signup{
+  font-size: 20px;
+  top:45px;  
+  left:500px;
+  position: absolute;
+}
+
 .cocktail {
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
@@ -99,17 +113,15 @@ body {
 
 #cocktail-image {
   width: 360px;
-  top:500px;
+  top:200px;
   position: absolute;
 }
 #cocktail-name {
-  top:300px;
+  top:100px;
   position: absolute;
   width:360px;
- 
-
-}
+ }
 .cocktail-recipe {
-  top:850px;
+  top:550px;
   position: absolute;
 }
