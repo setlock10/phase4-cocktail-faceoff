@@ -1,6 +1,15 @@
 function CocktailCard({left,drink,handleDrinkClick}) {
 
-    //style={{'font-size': '60px'}}
+    //style={{'font-size': '60px'}}drink.strIngredient1=" "
+    if (drink.strIngredient2===null) drink.strIngredient2=" "
+    if (drink.strIngredient3===null) drink.strIngredient3=" "
+    if (drink.strIngredient4===null) drink.strIngredient4=" "
+    if (drink.strIngredient5===null) drink.strIngredient5=" "
+    if (drink.strMeasure1===null) drink.strMeasure1=" "
+    if (drink.strMeasure2===null) drink.strMeasure2=" "
+    if (drink.strMeasure3===null) drink.strMeasure3=" "
+    if (drink.strMeasure4===null) drink.strMeasure4=" "
+    if (drink.strMeasure5===null) drink.strMeasure5=" "
 
 
     return(

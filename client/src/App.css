@@ -24,6 +24,8 @@
   color: white;
 }
 
+
+
 .App-link {
   color: #61dafb;
 }
@@ -41,7 +43,7 @@
 /* My Stuff */
 
 #logo{
-  background-color: black;
+  /* background-color: black; */
   color: white;
   font-family: 'Dancing Script';
   font-size: 45px;
@@ -52,9 +54,14 @@
 
 body {
   background-color: black;
+   background-image: url('images/bar_background.png'); 
   color: white;
   font-size: 30px;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.header{
+  font-size:20px;
 }
 
 .face-off-font {
@@ -72,6 +79,10 @@ body {
 
 }
 
+.hello{
+  font-size: 20px;
+}
+
 .versus{
   width: 40px;
   font-size: 30px;
@@ -81,26 +92,27 @@ body {
   color: red;    
   top:375px;  
   position: absolute;
-  left: 480px;
+  left: 485px;
 
   
 }
 
 .Login{
   font-size: 20px;
-  top:45px;  
+  top:75px;  
   left:500px;
   position: absolute;
 }
 
 .Signup{
   font-size: 20px;
-  top:45px;  
+  top:75px;  
   left:500px;
   position: absolute;
 }
 
 .cocktail {
+  background-color: black;
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   text-align: left;
@@ -108,20 +120,63 @@ body {
   display: inline-grid;
   width: 360px;
   position: absolute;
-
+  top:250px;
+  height:600px;
+  border-style: solid;
+  border-color: rgb(0, 10, 96);
+  border-width: 8px;
+  transform: scale(.85);
 }
+
+.cocktail:hover{
+  border-color: rgb(180, 189, 249);
+  transform: scale(1.00);
+}
+
 
 #cocktail-image {
   width: 360px;
-  top:200px;
+  top:100px;
   position: absolute;
 }
 #cocktail-name {
-  top:100px;
+  
+  text-align: center;
+  top:000px;
   position: absolute;
   width:360px;
  }
 .cocktail-recipe {
-  top:550px;
+  
+  top:450px;
   position: absolute;
+}
+
+.navbar {
+  font-size: 20px;
+  display: inline-block;
+  margin: 4rem;
+  margin-left: 10em;
+  text-decoration: none;
+  /* font-size: 1.2em; */
+  color: firebrick;
+  border-bottom: 2px solid firebrick;
+  transition: 0.1s;
+
+}
+
+.navbar:hover, .navbar:active {
+
+  color: tomato;
+  border-bottom: 2px solid tomato;
+
+}
+
+.rankings{
+
+  text-align: left;
+  left:450px;
+  position: absolute;
+  
+
 }

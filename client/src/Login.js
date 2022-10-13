@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 //import {Form} from '../styled/Form'
-function Login() {
+function Login({ setUser, setIsAuthenticated, isAuthenticated}) {
 
     const [loginFormVisible,setLoginFormVisible] =useState("hidden")
     const [signupFormVisible,setSignupFormVisible] =useState("hidden")
@@ -17,7 +17,32 @@ function Login() {
 
     const {username, password} = formData
 
-    function onSubmit(e){
+    
+
+    function onSignup(e){
+        e.preventDefault()
+        fetch(`/signup`,{
+            method:'POST',
+            headers:{'Content-Type': 'application/json'},
+            body:JSON.stringify(formData)
+          })
+          .then(res => {
+            if(res.ok){
+              res.json()
+              .then(user=>{
+                setUser(user)
+                setIsAuthenticated(true)
+                setSignupFormVisible("hidden")
+              })
+              
+            } else {
+              res.json()
+              .then(json => setErrors(json.errors))
+            }
+          })
+  
+    }
+    function onLogin(e){
         e.preventDefault()
         const user = {
             username,
@@ -34,6 +59,9 @@ function Login() {
                 res.json().then(user => {
 
                     history.push(`/users/${user.id}`)
+                    setLoginFormVisible('hidden')
+                    setIsAuthenticated(true)
+                    setUser(user)
                 })
             }else {
                 res.json().then(json => setErrors(json.errors))
@@ -57,13 +85,24 @@ function Login() {
         setSignupFormVisible("visible")
         setLoginFormVisible("hidden")
       }
+      function logout()
+      {
+        fetch('/logout',{
+            method:'DELETE'
+        })
+        .then(()=>{
+            setIsAuthenticated(false)
+            setUser(null)
+        })
+  
+      }
  
 
     return (
 
         <> 
-        <button onClick={()=>showLogin()}>Login</button><button onClick={()=>showSignup()}>Sign Up</button>
-        <form style={{visibility:loginFormVisible}} className="Login" onSubmit={onSubmit}>
+        <label className='hello' style={isAuthenticated?{visibility:'visible'}:{visibility:'hidden'}}>user {username} is logged in </label><button style={isAuthenticated?{visibility:'visible'}:{visibility:'hidden'}} onClick={()=>logout()}>Logout</button><button style={isAuthenticated?{visibility:'hidden'}:{visibility:'visible'}} onClick={()=>showLogin()}>Login</button><button style={isAuthenticated?{visibility:'hidden'}:{visibility:'visible'}} onClick={()=>showSignup()}>Sign Up</button>
+        <form style={{visibility:loginFormVisible}} className="Login" onSubmit={onLogin}>
         <label>
           Username
           </label>
@@ -77,7 +116,7 @@ function Login() {
        
         <input type='submit' value='Log in!' />
         </form>
-        <form style={{visibility:signupFormVisible}} className="Signup" onSubmit={onSubmit}>
+        <form style={{visibility:signupFormVisible}} className="Signup" onSubmit={onSignup}>
         <label>
           Username
           </label>
